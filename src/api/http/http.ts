@@ -1,5 +1,5 @@
 export default abstract class Http {
-    constructor( protected baseUrl: string) {
+    constructor( protected baseUrl: string , protected token?: string) {
     }
 
     abstract get(endpoint: string): Promise<any>

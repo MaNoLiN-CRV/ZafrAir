@@ -5,10 +5,14 @@ export default class Axios extends Http {
     private readonly instance: AxiosInstance; 
    
 
-    constructor(protected baseUrl: string) {
-        super(baseUrl);
+    constructor(protected baseUrl: string , protected token?: string) {
+        super(baseUrl , token); 
         this.instance = axios.create({
             baseURL: this.baseUrl,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.token}`
+            }
         });
     }
     
