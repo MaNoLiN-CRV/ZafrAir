@@ -1,4 +1,3 @@
-// Import React Navigation
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './HomeScreen';

@@ -1,13 +1,36 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import AComponent, { ACStatsProps } from '../components/ChartComponent.tsx';
+import AComponent, { ACStatsProps } from '../components/ChartComponent';
 
-const sampleData : ACStatsProps = {
+
+
+
+const sampleData1  : ACStatsProps = {
   historicalData: [
     {
       time: new Date().toLocaleDateString(),
       temperature: 24,
       humidity: 50
+    },
+    {
+      time: new Date().toLocaleDateString(),
+      temperature: 22,
+      humidity: 55
+    },
+    {
+      time: new Date().toLocaleDateString(),
+      temperature: 20,
+      humidity: 60
+    },
+    {
+      time: new Date().toLocaleDateString(),
+      temperature: 18,
+      humidity: 65
+    },
+    {
+      time: new Date().toLocaleDateString(),
+      temperature: 16,
+      humidity: 70
     }
   ],
   currentTemp: 20,
@@ -17,7 +40,19 @@ const sampleData : ACStatsProps = {
   targetTemp: 24
 }
 
+
+
 export default function HomeScreen() {
+  const [sampleData, setSampleData] = React.useState<ACStatsProps>(sampleData1);
+
+// simulation of data change
+setInterval(() => {
+  setSampleData({
+    ...sampleData,
+    currentTemp: Math.floor(Math.random() * 30),
+    currentHumidity: Math.floor(Math.random() * 100)
+  });
+}, 5000);
   return (
     <View>
       <Text>HomeScreen</Text>
