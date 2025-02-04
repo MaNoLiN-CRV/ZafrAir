@@ -7,21 +7,8 @@ import Animated, {
   interpolateColor
 } from 'react-native-reanimated';
 import { styles } from './styles/ACStatusStyle';
+import ACStatus from '../entities/ACStatus';
 
-export interface ACStatsProps {
-  historicalData: Data[];
-  currentTemp: number;
-  currentHumidity: number;
-  isRunning: boolean;
-  mode: 'cool' | 'warm';
-  targetTemp: number;
-}
-
-interface Data {
-  time: string;
-  temperature: number;
-  humidity: number;
-}
 
 export const COLORS = {
   cool: '#2196F3',
@@ -42,7 +29,7 @@ const AComponent = ({
   isRunning = false,
   mode = 'cool',
   targetTemp = 24
-}: ACStatsProps) => {
+}: ACStatus) => {
   const animationConfig = {
     duration: 3000,
   };
