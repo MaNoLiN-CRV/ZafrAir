@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import AComponent, { ACStatsProps } from '../components/ChartComponent';
+import AComponent, { ACStatsProps } from '../components/ACStatus';
 
 
 
@@ -33,10 +33,10 @@ const sampleData1  : ACStatsProps = {
       humidity: 70
     }
   ],
-  currentTemp: 20,
+  currentTemp: 2,
   currentHumidity: 0,
   isRunning: true,
-  mode: 'cool',
+  mode: 'warm',
   targetTemp: 24
 }
 
