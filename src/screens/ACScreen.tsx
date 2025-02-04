@@ -1,8 +1,10 @@
-import { View, Text } from 'react-native'
+import { View, Text, ImageBackground, StyleSheet } from 'react-native'
 import React from 'react'
 import Floor from '../entities/Floor'
 import AComponent from '../components/ACStatus'
-import RunningAcs from '../components/RunningAcs'
+import RunningAcs, { CardData } from '../components/RunningAcs'
+import AC from '../entities/AC'
+import { theme } from '../core/theme'
 
 
 const fakeFloors : Floor[] = [
@@ -87,9 +89,36 @@ const fakeFloors : Floor[] = [
 ] 
 
 export default function ACScreen() {
+    const dataAdapter = (data: AC[]) : CardData[] => {
+    const cardData : CardData[] = [];
+      data.forEach(ac => {
+          cardData.push({
+              id: ac.id,
+              title: ac.name,
+              description: ac.location || ''
+          })
+      })
+
+      return cardData
+    }
+
   return (
-    <View>
-      <RunningAcs floors={fakeFloors} />
+    <ImageBackground source={require('../../assets/background2.png') } style={styles.background} >
+    <View style={styles.container}>
+        <Text>ACs</Text>
+        <RunningAcs data={dataAdapter(fakeFloors[0].Acs)} />
     </View>
+    </ImageBackground>
   )
 }
+
+const styles = StyleSheet.create({
+    background: {
+        flex: 1,
+        resizeMode: 'cover',
+        justifyContent: 'center',
+      },
+      container: {
+        backgroundColor: 'rgba(28, 6, 124, 0.56)',
+      },
+})

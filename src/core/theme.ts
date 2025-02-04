@@ -7,7 +7,8 @@ export const theme = {
     primary: '#2f81fc',
     secondary: '#442ffc',
     shadow: 'rgb(5, 13, 255)',
-    background: '#e7e7e7',
+    blurBackground1: 'rgba(100, 167, 254, 0.55)',
+    blurBackground2: 'rgba(27, 12, 53, 0.48)',
     error: '#f13a59',
   },
 };
