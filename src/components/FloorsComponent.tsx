@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { View, Text, FlatList } from 'react-native'
 import Floor from '../entities/Floor'
 import VerticalCardScrollView, { CardData } from './VerticalCards'
@@ -14,15 +14,19 @@ export default function FloorsComponent({ navigation, floors }: Props) {
   const [toastVisible, setToastVisible] = useState(false);
   const [selectedFloorACs, setSelectedFloorACs] = useState<AC[]>([]);
 
-  const floorsCards: CardData[] = floors.map((floor) => ({
-    id: floor.id,
-    title: floor.name,
-    description: `${floor.Acs.length} ACs`,
-    onPress: () => {
-      setSelectedFloorACs(floor.Acs);
-      setToastVisible(true);
-    }
-  }))
+  const floorsCards = useMemo(() => 
+    floors.map((floor) => ({
+      id: floor.id,
+      title: floor.name,
+      description: `${floor.Acs.length} ACs`,
+      onPress: () => {
+        if (floor.Acs.length !== 0) {
+          setSelectedFloorACs(floor.Acs);
+          setToastVisible(true);
+        }
+      }
+    })), [floors]
+  );
 
   return (
     <View>

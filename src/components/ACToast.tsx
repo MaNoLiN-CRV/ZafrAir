@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { 
   View, 
   Text, 
   FlatList, 
   Modal, 
-  TouchableOpacity, 
-  StyleSheet
-} from 'react-native';
+  TouchableOpacity} from 'react-native';
 import { BlurView } from '@react-native-community/blur';
 import AComponent from './AComponent';
 import AC from '../entities/AC';
+import { styles } from './styles/ACToastStyle';
 
 interface ACToastProps {
   visible: boolean;
@@ -28,7 +27,6 @@ const ACToast = ({ visible, onClose, acs } : ACToastProps) => {
         style={styles.container}
         blurType="dark"
         blurAmount={20}
-        onTouchStart={onClose}
       >
         <View style={styles.modal}>
           <TouchableOpacity 
@@ -49,27 +47,5 @@ const ACToast = ({ visible, onClose, acs } : ACToastProps) => {
   );
 };
 
-export default ACToast;
+export default memo(ACToast);
 
-const styles = StyleSheet.create({
-    container: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      bottom: 0,
-      right: 0,
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
-    modal: {
-      width: '80%',
-      maxHeight: '60%',
-      backgroundColor: 'rgba(255,255,255,0.8)',
-      borderRadius: 20,
-      padding: 20
-    },
-    closeButton: {
-      alignSelf: 'flex-end',
-      marginBottom: 10
-    }
-  });

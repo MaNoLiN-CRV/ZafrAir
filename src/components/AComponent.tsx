@@ -65,14 +65,6 @@ const AComponent = ({
   
   }));
 
-  if (historicalData.length === 0) {
-    return (
-      <View style={[styles.container, styles.centeredContainer]}>
-        <Text style={styles.noDataText}>No hay datos disponibles</Text>
-      </View>
-    );
-  }
-
   const isCompactMode = width < 375;
   const modeColor = mode === 'cool' ? COLORS.cool : COLORS.warm;
 

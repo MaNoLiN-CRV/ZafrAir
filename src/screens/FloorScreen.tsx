@@ -22,9 +22,9 @@ const fakeFloors : Floor[] = [
            historicalData: [
              
            ],
-           currentTemp: 25,
-           currentHumidity: 50,
-           mode: 'cool',
+           currentTemp: 12,
+           currentHumidity: 57,
+           mode: 'warm',
            targetTemp: 24
 
           }
@@ -37,8 +37,8 @@ const fakeFloors : Floor[] = [
           isRunning: true,
           historicalData: [
           ],
-          currentTemp: 25,
-          currentHumidity: 50,
+          currentTemp: 22,
+          currentHumidity: 92,
           mode: 'cool',
           targetTemp: 24
         }
@@ -51,7 +51,7 @@ const fakeFloors : Floor[] = [
           isRunning: true,
           historicalData: [
           ],
-          currentTemp: 25,
+          currentTemp: 32,
           currentHumidity: 50,
           mode: 'cool',
           targetTemp: 24
@@ -79,9 +79,9 @@ const fakeFloors : Floor[] = [
           isRunning: true,
           historicalData: [
           ],
-          currentTemp: 25,
+          currentTemp: 15,
           currentHumidity: 50,
-          mode: 'cool',
+          mode: 'warm',
           targetTemp: 24
         }
       }
