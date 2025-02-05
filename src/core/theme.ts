@@ -4,11 +4,11 @@ export const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#2f81fc',
-    secondary: '#442ffc',
-    shadow: 'rgb(5, 13, 255)',
-    blurBackground1: 'rgba(100, 167, 254, 0.55)',
-    blurBackground2: 'rgba(27, 12, 53, 0.48)',
+    primary: '#6482AD',
+    secondary: '#7FA1C3',
+    third : '#E2DAD6',
+    background: '#F5EDED',
+    shadow: 'rgb(19, 19, 19)',
     error: '#f13a59',
   },
 };

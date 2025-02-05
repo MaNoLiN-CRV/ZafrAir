@@ -2,7 +2,7 @@ import { View, Text, ImageBackground, StyleSheet } from 'react-native'
 import React from 'react'
 import Floor from '../entities/Floor'
 import AComponent from '../components/ACStatus'
-import RunningAcs, { CardData } from '../components/RunningAcs'
+import RunningAcs, { CardData } from '../components/VerticalCards'
 import AC from '../entities/AC'
 import { theme } from '../core/theme'
 
@@ -103,12 +103,9 @@ export default function ACScreen() {
     }
 
   return (
-    <ImageBackground source={require('../../assets/background2.png') } style={styles.background} >
     <View style={styles.container}>
-        <Text>ACs</Text>
         <RunningAcs data={dataAdapter(fakeFloors[0].Acs)} />
     </View>
-    </ImageBackground>
   )
 }
 
@@ -119,6 +116,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
       },
       container: {
-        backgroundColor: 'rgba(28, 6, 124, 0.56)',
+        backgroundColor: theme.colors.background,
       },
 })

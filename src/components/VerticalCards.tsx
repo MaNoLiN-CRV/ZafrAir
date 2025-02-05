@@ -2,16 +2,16 @@ import React from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   Dimensions,
   ScrollView,
 } from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
 import { theme } from '../core/theme';
+import { styles } from './styles/VerticalCardsStyle';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
-const CARD_HEIGHT = SCREEN_HEIGHT * 0.3;
+export const CARD_HEIGHT = SCREEN_HEIGHT * 0.3;
 
 export interface CardData {
   id: string;
@@ -24,16 +24,16 @@ interface VerticalCardScrollViewProps {
   onEndReached?: () => void;
 }
 
-const VerticalCardScrollView: React.FC<VerticalCardScrollViewProps> = ({
+const VerticalCardScrollView = ({
   data,
   onEndReached
-}) => {
+} : VerticalCardScrollViewProps) => {
   const renderCard = (card: CardData) => {
     return (
       <View style={styles.cardContainer}>
        
         <LinearGradient
-          colors={[theme.colors.blurBackground1, theme.colors.blurBackground2]}
+          colors={[theme.colors.primary, theme.colors.secondary]}
           style={styles.gradient}
         >
           <View style={styles.contentContainer}>
@@ -48,7 +48,6 @@ const VerticalCardScrollView: React.FC<VerticalCardScrollViewProps> = ({
 
   return (
     <ScrollView
-     
       showsVerticalScrollIndicator={false}
       contentContainerStyle={styles.contentContainerStyle}
       onMomentumScrollEnd={onEndReached}
@@ -61,44 +60,6 @@ const VerticalCardScrollView: React.FC<VerticalCardScrollViewProps> = ({
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-
-
-  cardContainer: {
-    height: CARD_HEIGHT,
-    borderRadius: 20,
-   
-    overflow: 'hidden',
-    backgroundColor: 'transparent',
-    margin: 20,
-    filter : `drop-shadow(0 2 10px black)`,
-  
-  },
-  gradient: {
-    flex: 1,
-    padding: 20,
-    justifyContent: 'flex-end',
-  },
-  contentContainer: {
-    
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: '#FFFFFF',
-    marginBottom: 10,
-  },
-  description: {
-    fontSize: 16,
-    color: '#FFFFFF',
-    opacity: 0.8,
-  },
-  contentContainerStyle: {
-    paddingVertical: 20,
-    
-  },
-});
 
 export default VerticalCardScrollView;
 
