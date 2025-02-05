@@ -1,10 +1,11 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo, useEffect, useMemo, useState } from 'react';
 import {
     View,
     Text,
     FlatList,
     Modal,
-    TouchableOpacity
+    TouchableOpacity,
+    ActivityIndicator
 } from 'react-native';
 import { BlurView } from '@react-native-community/blur';
 import AComponent from './AComponent';
@@ -16,18 +17,44 @@ interface ACToastProps {
     onClose: () => void;
     acs: AC[];
     lazy?: { size: number; offset: number };
+    timeLoading?: number;
 }
 
-const ACToast = ({ visible, onClose, acs }: ACToastProps) => {
-    if (!visible) {
-        return null;
-    }
+const ACToast = ({ visible, onClose, acs , lazy, timeLoading}: ACToastProps) => {
+    const [loading, setLoading] = useState(true);
+    const [acsData, setAcsData] = useState<AC[]>([]);
+
+    const onEndReached = () => {
+        if (lazy && !loading) {
+            setLoading(true);
+            const offset = acsData.length;
+            const size = lazy.size;
+            const newData = acs.slice(offset, offset + size);
+            setAcsData([...acsData, ...newData]);
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        const offset = lazy ? lazy.offset : 0;
+        const size = lazy ? lazy.size : acs.length;
+        const newData = acs.slice(offset, offset + size);
+        setAcsData(newData);
+        if (visible) {
+            setLoading(true);
+            setTimeout(() => setLoading(false), timeLoading || 500);
+        }
+    }, [visible]);
+
+  
+
 
     return (
         <Modal
             transparent={true}
             visible={visible}
             animationType="fade"
+            onShow={() => setLoading(true)}
         >
             <BlurView
                 style={styles.container}
@@ -42,15 +69,20 @@ const ACToast = ({ visible, onClose, acs }: ACToastProps) => {
                         <Text>Close</Text>
                     </TouchableOpacity>
 
-                    <FlatList
-                        data={acs}
-                        renderItem={({ item }) => (
-                            <AComponent {...item.status} />
-                        )}
-                        keyExtractor={item => item.id}
-                        style={styles.flatList}
-                        
-                    />
+                    {loading ? (
+                        <ActivityIndicator size="large" color="#00ff00" />
+                    ) : (
+                        <FlatList
+                            data={acsData}
+                            onEndReached={onEndReached}
+                            renderItem={({ item }) => (
+                                <AComponent {...item.status} />
+                            )}
+                            keyExtractor={item => item.id}
+                            style={styles.flatList}
+                            onEndReachedThreshold={0.2}
+                        />
+                    )}
                 </View>
             </BlurView>
         </Modal>
@@ -58,4 +90,5 @@ const ACToast = ({ visible, onClose, acs }: ACToastProps) => {
 };
 
 export default memo(ACToast);
+
 

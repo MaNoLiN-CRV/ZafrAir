@@ -35,6 +35,8 @@ export default function FloorsComponent({ navigation, floors }: Props) {
         visible={toastVisible} 
         onClose={() => setToastVisible(false)} 
         acs={selectedFloorACs} 
+        lazy={{size: 3, offset: 0}}
+        timeLoading={1000}
       />
     </View>
   )
