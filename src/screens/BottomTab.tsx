@@ -16,6 +16,9 @@ const Navigation = () => {
         headerShown: false,
         tabBarActiveTintColor: theme.colors.primary,
         tabBarInactiveTintColor: theme.colors.secondary,
+        tabBarStyle: {
+          backgroundColor: theme.colors.background,
+        },
       }}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
