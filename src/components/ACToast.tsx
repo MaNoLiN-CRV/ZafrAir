@@ -20,7 +20,7 @@ interface ACToastProps {
     timeLoading?: number;
 }
 
-const ACToast = ({ visible, onClose, acs , lazy, timeLoading}: ACToastProps) => {
+const ACToast = ({ visible, onClose, acs, lazy, timeLoading }: ACToastProps) => {
     const [loading, setLoading] = useState(true);
     const [acsData, setAcsData] = useState<AC[]>([]);
 
@@ -45,9 +45,6 @@ const ACToast = ({ visible, onClose, acs , lazy, timeLoading}: ACToastProps) => 
             setTimeout(() => setLoading(false), timeLoading || 500);
         }
     }, [visible]);
-
-  
-
 
     return (
         <Modal
@@ -76,7 +73,7 @@ const ACToast = ({ visible, onClose, acs , lazy, timeLoading}: ACToastProps) => 
                             data={acsData}
                             onEndReached={onEndReached}
                             renderItem={({ item }) => (
-                                <AComponent {...item.status} />
+                                <AComponent {...item} />
                             )}
                             keyExtractor={item => item.id}
                             style={styles.flatList}

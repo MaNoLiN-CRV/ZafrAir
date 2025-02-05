@@ -8,6 +8,8 @@ import Animated, {
 } from 'react-native-reanimated';
 import { styles } from './styles/ACStatusStyle';
 import ACStatus from '../entities/ACStatus';
+import AC from '../entities/AC';
+import { green, red } from 'react-native-reanimated/lib/typescript/Colors';
 
 
 export const COLORS = {
@@ -23,13 +25,10 @@ const { width } = Dimensions.get('window');
 const warmTemp = 20;
 
 const AComponent = ({
-  historicalData = [],
-  currentTemp = 0,
-  currentHumidity = 0,
-  isRunning = false,
-  mode = 'cool',
-  targetTemp = 24
-}: ACStatus) => {
+  name,
+  location,
+  status: { isRunning, historicalData, currentTemp, currentHumidity, mode, targetTemp },
+}: AC) => {
   const animationConfig = {
     duration: 3000,
   };
@@ -74,16 +73,20 @@ const AComponent = ({
         styles.statsPanel, 
         { width: isCompactMode ? '100%' : '60%' }
       ]}>
-        <Text style={styles.panelTitle}>Estado Actual</Text>
+        <Text style={styles.panelTitle}>{name}</Text>
         <View style={styles.statsContent}>
           <StatRow label="Temperatura" 
             value={`${currentTemp}°C`} />
           <StatRow label="Objetivo"
             value={`${targetTemp}°C`} />
-          <StatRow label="Humedad" 
-            value={`${currentHumidity}%`} />
+          {location && <StatRow label="Location" 
+            value={location} 
+            />}
+        
           <StatRow label="Estado" 
-            value={isRunning ? 'Funcionando' : 'Apagado'} />
+            value={isRunning ? 'Funcionando' : 'Apagado'} 
+            valueColor={isRunning ? 'green': 'red'} />
+            
           <StatRow label="Modo" 
             value={mode.charAt(0).toUpperCase() + mode.slice(1)}
             valueColor={modeColor} />

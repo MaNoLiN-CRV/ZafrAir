@@ -10,7 +10,8 @@ export const styles = StyleSheet.create({
         bottom: 0,
         right: 0,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        
     },
     modal: {
         width: '95%',

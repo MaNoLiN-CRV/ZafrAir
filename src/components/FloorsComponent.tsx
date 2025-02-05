@@ -18,7 +18,7 @@ export default function FloorsComponent({ navigation, floors }: Props) {
     floors.map((floor) => ({
       id: floor.id,
       title: floor.name,
-      description: `${floor.Acs.length} ACs`,
+      description: `Unidades conectadas: ${floor.Acs.length}`,
       onPress: () => {
         if (floor.Acs.length !== 0) {
           setSelectedFloorACs(floor.Acs);
