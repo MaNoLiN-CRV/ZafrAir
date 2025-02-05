@@ -19,27 +19,30 @@ export interface CardData {
   id: string;
   title: string;
   description: string;
+  image?: string;
+  onPress?: () => void;
 }
 
 interface VerticalCardScrollViewProps {
   data: CardData[];
   onEndReached?: () => void;
-  onTap?: (card: CardData) => void;
+  children?: React.ReactNode[];
 }
 
 const VerticalCardScrollView = ({
   data,
   onEndReached,
-  onTap
+  children
 }: VerticalCardScrollViewProps) => {
-  const renderCard = (card: CardData) => {
+  const renderCard = (card: CardData, index: number) => {
     return (
-      <TouchableOpacity onPress={() => onTap?.(card)}>
+      <TouchableOpacity onPress={() => card.onPress?.()}>
         <View style={styles.cardContainer} >
           <LinearGradient
             colors={[theme.colors.primary, theme.colors.secondary]}
             style={styles.gradient}
           >
+            { children ? children[index] : null }
             <View style={styles.contentContainer}>
               <Text style={styles.title}>{card.title}</Text>
               <Text style={styles.description}>{card.description}</Text>
@@ -49,7 +52,7 @@ const VerticalCardScrollView = ({
       </TouchableOpacity>
     );
   };
-  
+
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -58,7 +61,7 @@ const VerticalCardScrollView = ({
     >
       {data.map((card, index) => (
         <View key={index}>
-          {renderCard(card)}
+          {renderCard(card, index)}
         </View>
       ))}
     </ScrollView>

@@ -1,16 +1,17 @@
 import { View, Text, ImageBackground, StyleSheet } from 'react-native'
 import React from 'react'
 import Floor from '../entities/Floor'
-import AComponent from '../components/ACStatus'
+import AComponent from '../components/AComponent'
 import RunningAcs, { CardData } from '../components/VerticalCards'
 import AC from '../entities/AC'
 import { theme } from '../core/theme'
+import FloorsComponent from '../components/FloorsComponent'
 
 
 const fakeFloors : Floor[] = [
   {
     id: '1',
-    name: 'Floor 1',
+    name: 'Planta 3',
     Acs: [
       {
         id: '1',
@@ -85,26 +86,53 @@ const fakeFloors : Floor[] = [
         }
       }
     ]
+  },
+  {
+    id: '2',
+    name: 'Planta 2',
+    Acs: [
+      {
+        id: '6',
+        name: 'AC 6',
+        location: 'Room 6',
+        status: {
+          isRunning: true,
+          historicalData: [
+          ],
+          currentTemp: 25,
+          currentHumidity: 50,
+          mode: 'cool',
+          targetTemp: 24
+        }
+      }
+    ]
+  },
+  {
+    id: '3',
+    name: 'Planta 1',
+    Acs: [
+      {
+        id: '7',
+        name: 'AC 7',
+        location: 'Room 7',
+        status: {
+          isRunning: true,
+          historicalData: [
+          ],
+          currentTemp: 25,
+          currentHumidity: 50,
+          mode: 'cool',
+          targetTemp: 24
+        }
+      }
+    ]
   }
 ] 
 
-export default function ACScreen() {
-    const dataAdapter = (data: AC[]) : CardData[] => {
-    const cardData : CardData[] = [];
-      data.forEach(ac => {
-          cardData.push({
-              id: ac.id,
-              title: ac.name,
-              description: ac.location || ''
-          })
-      })
-
-      return cardData
-    }
-
+export default function ACScreen({navigation} : any) {
   return (
     <View style={styles.container}>
-        <RunningAcs data={dataAdapter(fakeFloors[0].Acs)} />
+        <FloorsComponent floors={fakeFloors} navigation={navigation}/>
     </View>
   )
 }
