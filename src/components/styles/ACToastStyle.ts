@@ -23,5 +23,9 @@ export const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         marginBottom: 10,
         fontSize: 20
+    },
+    flatList : {
+        marginBottom: 10,
+        width: '100%'
     }
 });

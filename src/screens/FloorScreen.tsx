@@ -126,6 +126,46 @@ const fakeFloors : Floor[] = [
         }
       }
     ]
+  },
+  {
+    id: '4',
+    name: 'Planta 0',
+    Acs: [
+      {
+        id: '8',
+        name: 'AC 8',
+        location: 'Room 8',
+        status: {
+          isRunning: true,
+          historicalData: [
+          ],
+          currentTemp: 25,
+          currentHumidity: 50,
+          mode: 'cool',
+          targetTemp: 24
+        }
+      }
+    ]
+  },
+  {
+    id: '5',
+    name: 'Planta -1',
+    Acs: [
+      {
+        id: '9',
+        name: 'AC 9',
+        location: 'Room 9',
+        status: {
+          isRunning: true,
+          historicalData: [
+          ],
+          currentTemp: 25,
+          currentHumidity: 50,
+          mode: 'cool',
+          targetTemp: 24
+        }
+      }
+    ]
   }
 ] 
 
