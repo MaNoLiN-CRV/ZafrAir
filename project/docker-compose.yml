@@ -1,0 +1,47 @@
+version: '3'
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: ghcr.io/home-assistant/home-assistant:stable
+    volumes:
+      - ./homeassistant:/config
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "8123:8123"
+    environment:
+      - TZ=Europe/Madrid
+    restart: unless-stopped
+    networks:
+      - ac_network
+
+  mosquitto:
+    container_name: mosquitto
+    image: eclipse-mosquitto:latest
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    restart: unless-stopped
+    networks:
+      - ac_network
+
+  express-api:
+    container_name: express-api
+    build: ./api
+    ports:
+      - "3000:3000"
+    environment:
+      - MQTT_BROKER=mqtt://mosquitto:1883
+      - NODE_ENV=production
+    depends_on:
+      - mosquitto
+    restart: unless-stopped
+    networks:
+      - ac_network
+
+networks:
+  ac_network:
+    driver: bridge
