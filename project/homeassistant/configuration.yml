@@ -1,0 +1,23 @@
+mqtt:
+  broker: mosquitto
+  discovery: true
+  discovery_prefix: homeassistant
+
+automation:
+  - alias: "Publicar estado de AC"
+    trigger:
+      - platform: time_pattern
+        minutes: "/5"
+    action:
+      - service: mqtt.publish
+        data:
+          topic: "homeassistant/ac/{{trigger.entity_id}}/status"
+          payload_template: >
+            {
+              "historicalData": [],
+              "currentTemp": {{ states('sensor.ac_temperature') }},
+              "currentHumidity": {{ states('sensor.ac_humidity') }},
+              "isRunning": {{ is_state('switch.ac_power', 'on') }},
+              "mode": "{{ states('input_select.ac_mode') }}",
+              "targetTemp": {{ states('input_number.ac_target_temp') }}
+            }
