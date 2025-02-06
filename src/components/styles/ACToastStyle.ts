@@ -23,7 +23,8 @@ export const styles = StyleSheet.create({
     closeButton: {
         alignSelf: 'flex-end',
         marginBottom: 10,
-        fontSize: 20
+        fontSize: 20,
+        color: theme.colors.text
     },
     flatList : {
         marginBottom: 10,

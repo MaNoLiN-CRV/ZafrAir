@@ -1,6 +1,14 @@
 import { StyleSheet } from 'react-native';
-import { COLORS } from '../AComponent';
+import { theme } from '../../core/theme';
 
+export const COLORS = {
+  cool: '#2196F3',
+  warm: '#FF9800',
+  background: theme.colors.background,
+  text: theme.colors.text,
+  subtext: theme.colors.text,
+  border: '#E0E0E0',
+};
 
 export const styles = StyleSheet.create({
   container: {
@@ -9,7 +17,7 @@ export const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 16,
     margin: 12,
-    shadowColor: '#000',
+    shadowColor: theme.colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -22,7 +30,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   statsPanel: {
-    backgroundColor: '#f9fafb',
+    backgroundColor: theme.colors.background,
     borderRadius: 12,
     padding: 16,
     borderWidth: 1,
@@ -60,7 +68,7 @@ export const styles = StyleSheet.create({
     padding: 16,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: theme.colors.background,
     borderWidth: 2,
   },
   currentTempText: {
@@ -77,3 +85,5 @@ export const styles = StyleSheet.create({
     color: COLORS.subtext,
   }
 });
+
+

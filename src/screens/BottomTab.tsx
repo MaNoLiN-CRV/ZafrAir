@@ -15,7 +15,7 @@ const Navigation = () => {
         screenOptions={{
           headerShown: false,
           tabBarActiveTintColor: theme.colors.primary,
-          tabBarInactiveTintColor: theme.colors.secondary,
+          tabBarInactiveTintColor: theme.colors.text,
           tabBarStyle: {
             backgroundColor: theme.colors.background,
           },

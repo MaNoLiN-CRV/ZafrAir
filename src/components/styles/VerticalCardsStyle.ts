@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { CARD_HEIGHT } from '../VerticalCards';
+import { theme } from '../../core/theme';
 
 
 export const styles = StyleSheet.create({
@@ -10,7 +11,7 @@ export const styles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: 'transparent',
     margin: 20,
-    filter: `drop-shadow(0 2 10px black)`,
+    filter: `drop-shadow(0 2 10px ${theme.colors.shadow})`,
   },
   gradient: {
     flex: 1,
@@ -21,12 +22,12 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: '600',
-    color: '#FFFFFF',
+    color: theme.colors.text,
     marginBottom: 10,
   },
   description: {
     fontSize: 16,
-    color: '#FFFFFF',
+    color: theme.colors.text,
     opacity: 0.8,
   },
   contentContainerStyle: {

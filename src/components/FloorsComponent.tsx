@@ -30,7 +30,7 @@ export default function FloorsComponent({ navigation, floors }: Props) {
 
   return (
     <View>
-      <VerticalCardScrollView data={floorsCards} lazy={{size: 4, offset: 0}}/>
+      <VerticalCardScrollView data={floorsCards}/>
       <ACToast 
         visible={toastVisible} 
         onClose={() => setToastVisible(false)} 

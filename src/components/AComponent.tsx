@@ -6,20 +6,11 @@ import Animated, {
   withTiming,
   interpolateColor
 } from 'react-native-reanimated';
-import { styles } from './styles/ACStatusStyle';
+import { COLORS, styles } from './styles/ACStatusStyle';
 import ACStatus from '../entities/ACStatus';
 import AC from '../entities/AC';
 import { green, red } from 'react-native-reanimated/lib/typescript/Colors';
 
-
-export const COLORS = {
-  cool: '#2196F3',
-  warm: '#FF9800',
-  background: '#ffffff',
-  text: '#333333',
-  subtext: '#6b7280',
-  border: '#e5e7eb',
-};
 
 const { width } = Dimensions.get('window');
 const warmTemp = 20;

@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
         justifyContent: 'center',
       },
-      container: {
+      container: {  
         backgroundColor: theme.colors.background,
       },
 })
