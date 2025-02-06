@@ -31,19 +31,6 @@ const theme2 = {
   },
 };
 
-const theme3 = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: '#ff5722',
-    secondary: '#ffc107',
-    third : '#455a64',
-    background: 'rgb(255, 255, 255)',
-    shadow: 'rgb(19, 19, 19)',
-    text: 'rgb(0, 0, 0)',
-    error: '#f13a59',
-  },
-};
 
 const fire = {
   ...DefaultTheme,
@@ -73,12 +60,14 @@ const darkTheme = {
   },
 };
 
-export const themes = {
+
+const themes = {
   theme1,
   theme2,
-  theme3,
   fire,
   darkTheme,
 };
 
-export const theme = darkTheme;
+
+export default themes;
+

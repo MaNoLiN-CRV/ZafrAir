@@ -1,8 +1,8 @@
 import React from 'react';
 import type {PropsWithChildren} from 'react';
-
-
 import Navigation from './src/screens/BottomTab';
+import { ThemeProvider } from './src/providers/ThemeProvider';
+
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -10,7 +10,9 @@ type SectionProps = PropsWithChildren<{
 
 function App(): React.JSX.Element {
   return (
+   <ThemeProvider>
       <Navigation/>
+  </ThemeProvider>
   );
 }
 

@@ -4,8 +4,9 @@ import Floor from '../entities/Floor'
 import AComponent from '../components/AComponent'
 import RunningAcs, { CardData } from '../components/VerticalCards'
 import AC from '../entities/AC'
-import { theme } from '../core/theme'
+
 import FloorsComponent from '../components/FloorsComponent'
+import { useTheme } from '../providers/ThemeProvider'
 
 
 const fakeFloors : Floor[] = [
@@ -170,6 +171,8 @@ const fakeFloors : Floor[] = [
 ] 
 
 export default function ACScreen({navigation} : any) {
+  const { currentTheme } = useTheme();
+  const styles = createStyles(currentTheme);
   return (
     <View style={styles.container}>
         <FloorsComponent floors={fakeFloors} navigation={navigation}/>
@@ -177,7 +180,7 @@ export default function ACScreen({navigation} : any) {
   )
 }
 
-const styles = StyleSheet.create({
+const createStyles = (theme : any) => StyleSheet.create({
     background: {
         flex: 1,
         resizeMode: 'cover',

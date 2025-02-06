@@ -1,8 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../core/theme';
 
-
-export const styles = StyleSheet.create({
+export const createStyles = (theme : any) => StyleSheet.create({
   background: {
     flex: 1,
     resizeMode: 'cover',

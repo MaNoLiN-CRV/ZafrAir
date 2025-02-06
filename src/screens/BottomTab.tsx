@@ -2,22 +2,23 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
 import Settings from './Settings';
-import { theme } from '../core/theme';
+import { useTheme } from '../providers/ThemeProvider';
 import FloorScreen from './FloorScreen';
 
 
 const Tab = createBottomTabNavigator();
 
 const Navigation = () => {
+  const { currentTheme } = useTheme();
   return (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
-          tabBarActiveTintColor: theme.colors.primary,
-          tabBarInactiveTintColor: theme.colors.text,
+          tabBarActiveTintColor: currentTheme.colors.primary,
+          tabBarInactiveTintColor: currentTheme.colors.text,
           tabBarStyle: {
-            backgroundColor: theme.colors.background,
+            backgroundColor: currentTheme.colors.background,
           },
         }}
       >

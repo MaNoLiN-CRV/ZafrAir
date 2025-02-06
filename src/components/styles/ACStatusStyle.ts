@@ -1,16 +1,8 @@
 import { StyleSheet } from 'react-native';
-import { theme } from '../../core/theme';
 
-export const COLORS = {
-  cool: '#2196F3',
-  warm: '#FF9800',
-  background: theme.colors.background,
-  text: theme.colors.text,
-  subtext: theme.colors.text,
-  border: '#E0E0E0',
-};
 
-export const styles = StyleSheet.create({
+export const createStyles = (theme : any) => StyleSheet.create({
+
   container: {
     width: '95%',
     alignSelf: 'center',
@@ -34,13 +26,13 @@ export const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 16,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: theme.colors.border,
   },
   panelTitle: {
     fontSize: 18,
     fontWeight: '700',
     marginBottom: 12,
-    color: COLORS.text,
+    color: theme.colors.text,
   },
   statsContent: {
     flexDirection: 'column',
@@ -54,13 +46,13 @@ export const styles = StyleSheet.create({
   },
   statLabel: {
     fontSize: 14,
-    color: COLORS.subtext,
+    color: theme.colors.text,
     fontWeight: '500',
   },
   statValue: {
     fontSize: 14,
     fontWeight: '600',
-    color: COLORS.text,
+    color: theme.colors.text,
   },
   indicatorPanel: {
     flex: 1,
@@ -70,20 +62,22 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: theme.colors.background,
     borderWidth: 2,
+    borderColor: theme.colors.border,
   },
   currentTempText: {
     fontSize: 28,
     fontWeight: 'bold',
+    color: theme.colors.text,
   },
   diffText: {
     fontSize: 14,
     marginTop: 8,
     fontWeight: '500',
+    color: theme.colors.text,
   },
   noDataText: {
     fontSize: 16,
-    color: COLORS.subtext,
+    color: theme.colors.subtext,
   }
 });
-
 

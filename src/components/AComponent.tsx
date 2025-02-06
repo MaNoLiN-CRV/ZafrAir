@@ -1,25 +1,32 @@
 import React, { useEffect } from 'react';
 import { View, Text, Dimensions } from 'react-native';
-import Animated, { 
-  useSharedValue, 
-  useAnimatedStyle, 
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
   withTiming,
   interpolateColor
 } from 'react-native-reanimated';
-import { COLORS, styles } from './styles/ACStatusStyle';
-import ACStatus from '../entities/ACStatus';
+import { createStyles } from './styles/ACStatusStyle';
 import AC from '../entities/AC';
-import { green, red } from 'react-native-reanimated/lib/typescript/Colors';
-
+import { useTheme } from '../providers/ThemeProvider';
 
 const { width } = Dimensions.get('window');
 const warmTemp = 20;
+
+const COLORS = {
+  cool: 'rgb(33, 79, 117)',
+  warm: 'rgb(187, 121, 22)',
+};
 
 const AComponent = ({
   name,
   location,
   status: { isRunning, historicalData, currentTemp, currentHumidity, mode, targetTemp },
 }: AC) => {
+
+  const { currentTheme } = useTheme();
+  const styles = createStyles(currentTheme);
+
   const animationConfig = {
     duration: 3000,
   };
@@ -48,11 +55,11 @@ const AComponent = ({
   };
 
   const tempAnimatedStyle = useAnimatedStyle(() => ({
-    transform: [{ 
+    transform: [{
       scale: withTiming(1 + (tempDiff * 0.02), animationConfig)
     }],
     color: calculateColorCurrentTemp(currentTemp)
-  
+
   }));
 
   const isCompactMode = width < 375;
@@ -61,24 +68,24 @@ const AComponent = ({
   return (
     <Animated.View style={[styles.container, containerAnimatedStyle]}>
       <View style={[
-        styles.statsPanel, 
+        styles.statsPanel,
         { width: isCompactMode ? '100%' : '60%' }
       ]}>
         <Text style={styles.panelTitle}>{name}</Text>
         <View style={styles.statsContent}>
-          <StatRow label="Temperatura" 
+          <StatRow label="Temperatura"
             value={`${currentTemp}°C`} />
           <StatRow label="Objetivo"
             value={`${targetTemp}°C`} />
-          {location && <StatRow label="Location" 
-            value={location} 
-            />}
-        
-          <StatRow label="Estado" 
-            value={isRunning ? 'Funcionando' : 'Apagado'} 
-            valueColor={isRunning ? 'green': 'red'} />
-            
-          <StatRow label="Modo" 
+          {location && <StatRow label="Location"
+            value={location}
+          />}
+
+          <StatRow label="Estado"
+            value={isRunning ? 'Funcionando' : 'Apagado'}
+            valueColor={isRunning ? 'green' : 'red'} />
+
+          <StatRow label="Modo"
             value={mode.charAt(0).toUpperCase() + mode.slice(1)}
             valueColor={modeColor} />
         </View>
@@ -99,17 +106,22 @@ const AComponent = ({
   );
 };
 
-const StatRow = ({ label, value, valueColor }: { 
-  label: string; 
-  value: string; 
+const StatRow = ({ label, value, valueColor }: {
+  label: string;
+  value: string;
   valueColor?: string;
-}) => (
-  <View style={styles.statRow}>
-    <Text style={styles.statLabel}>{label}:</Text>
-    <Text style={[styles.statValue, valueColor && { color: valueColor }]}>
-      {value}
-    </Text>
-  </View>
-);
+
+}) => {
+  const { currentTheme } = useTheme();
+  const styles = createStyles(currentTheme);
+  return (
+    <View style={styles.statRow}>
+      <Text style={styles.statLabel}>{label}:</Text>
+      <Text style={[styles.statValue, valueColor && { color: valueColor }]}>
+        {value}
+      </Text>
+    </View>
+  );
+}
 
 export default AComponent;

@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { View, Text, FlatList } from 'react-native'
+import { View } from 'react-native'
 import Floor from '../entities/Floor'
 import VerticalCardScrollView, { CardData } from './VerticalCards'
 import ACToast from './ACToast'

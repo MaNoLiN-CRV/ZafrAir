@@ -1,13 +1,10 @@
 import { StyleSheet } from 'react-native';
 import { CARD_HEIGHT } from '../VerticalCards';
-import { theme } from '../../core/theme';
 
-
-export const styles = StyleSheet.create({
+export const createStyles = (theme : any) => StyleSheet.create({
   cardContainer: {
     height: CARD_HEIGHT,
     borderRadius: 20,
-
     overflow: 'hidden',
     backgroundColor: 'transparent',
     margin: 20,

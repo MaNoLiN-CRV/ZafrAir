@@ -10,7 +10,8 @@ import {
 import { BlurView } from '@react-native-community/blur';
 import AComponent from './AComponent';
 import AC from '../entities/AC';
-import { styles } from './styles/ACToastStyle';
+import { createStyles } from './styles/ACToastStyle';
+import { useTheme } from '../providers/ThemeProvider';
 
 interface ACToastProps {
     visible: boolean;
@@ -23,6 +24,9 @@ interface ACToastProps {
 const ACToast = ({ visible, onClose, acs, lazy, timeLoading }: ACToastProps) => {
     const [loading, setLoading] = useState(true);
     const [acsData, setAcsData] = useState<AC[]>([]);
+
+    const { currentTheme } = useTheme();
+    const styles = createStyles(currentTheme);
 
     const onEndReached = () => {
         if (lazy && !loading) {
