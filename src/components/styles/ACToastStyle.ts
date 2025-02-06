@@ -23,8 +23,11 @@ export const createStyles = (theme : any) => StyleSheet.create({
     closeButton: {
         alignSelf: 'flex-end',
         marginBottom: 10,
-        fontSize: 20,
-        color: theme.colors.text
+    },
+    closeButtonText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: theme.colors.primary
     },
     flatList : {
         marginBottom: 10,

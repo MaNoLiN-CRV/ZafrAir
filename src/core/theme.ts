@@ -2,7 +2,7 @@ import { DefaultTheme, shadow } from 'react-native-paper';
 
 
 
-const theme1 = {
+const normal = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
@@ -17,7 +17,7 @@ const theme1 = {
 };
 
 
-const theme2 = {
+const sky = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
@@ -62,8 +62,8 @@ const darkTheme = {
 
 
 const themes = {
-  theme1,
-  theme2,
+  normal,
+  sky,
   fire,
   darkTheme,
 };

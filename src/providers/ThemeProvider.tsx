@@ -2,7 +2,7 @@ import React, { createContext, useState, useContext } from 'react';
 import { Provider as PaperProvider } from 'react-native-paper';
 import themes from '../core/theme';
 
-const { darkTheme, theme1, theme2, fire } = themes;
+const { darkTheme } = themes;
 
 type ThemeType = typeof darkTheme;
 

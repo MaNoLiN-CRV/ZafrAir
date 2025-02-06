@@ -67,7 +67,7 @@ const ACToast = ({ visible, onClose, acs, lazy, timeLoading }: ACToastProps) => 
                         onPress={onClose}
                         style={styles.closeButton}
                     >
-                        <Text>Close</Text>
+                        <Text style={styles.closeButtonText}>Close</Text>
                     </TouchableOpacity>
 
                     {loading ? (
