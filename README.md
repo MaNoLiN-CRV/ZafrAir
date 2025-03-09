@@ -17,5 +17,9 @@ En este proyecto cumplo:
 Puntuación Total: 10 puntos
 
 
+El proyecto trata sobre una app para visualizar los datos de aires acondicionados a partir de un broker mqtt y home assistant.
+También implemento multiples temas configurables.
+
+
 ![image](https://github.com/user-attachments/assets/ec507ac3-1642-4b66-9c62-d87c04944980)
 
